@@ -11,7 +11,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.rerere.iwara4a.R
-import com.rerere.iwara4a.ui.component.basic.Centered
+import com.rerere.iwara4a.ui.component.layout.Centered
 
 private val animList = listOf(
     R.raw.niko,

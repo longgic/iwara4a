@@ -95,7 +95,7 @@ fun LikeScreen(navController: NavController, likedViewModel: LikedViewModel = hi
                         contentPadding = WindowInsets.navigationBars.asPaddingValues()
                     ) {
                         items(likeList) {
-                            MediaPreviewCard(navController, it!!)
+                            MediaPreviewCard(mediaPreview = it!!)
                         }
 
                         appendIndicator(likeList)

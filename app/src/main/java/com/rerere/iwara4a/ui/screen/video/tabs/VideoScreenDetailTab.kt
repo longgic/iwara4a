@@ -430,7 +430,7 @@ private fun AuthorMoreVideo(videoDetail: VideoDetail) {
                 it.fastForEach {
                     Box(modifier = Modifier.weight(1f)) {
                         MediaPreviewCard(
-                            navController, MediaPreview(
+                            mediaPreview = MediaPreview(
                                 title = it.title,
                                 author = "",
                                 previewPic = it.pic,

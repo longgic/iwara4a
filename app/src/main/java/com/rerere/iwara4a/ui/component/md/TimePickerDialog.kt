@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.rerere.iwara4a.ui.component.basic.Centered
+import com.rerere.iwara4a.ui.component.layout.Centered
 import java.util.*
 
 /**

@@ -46,7 +46,7 @@ import com.rerere.iwara4a.R
 import com.rerere.iwara4a.data.model.user.UserData
 import com.rerere.iwara4a.data.model.user.UserFriendState
 import com.rerere.iwara4a.ui.component.*
-import com.rerere.iwara4a.ui.component.basic.Centered
+import com.rerere.iwara4a.ui.component.layout.Centered
 import com.rerere.iwara4a.ui.component.modifier.noRippleClickable
 import com.rerere.iwara4a.ui.component.paging3.items
 import com.rerere.iwara4a.ui.local.LocalNavController
@@ -379,7 +379,8 @@ private fun CommentList(navController: NavController, userViewModel: UserViewMod
             ) {
                 Icon(Icons.Outlined.Comment, null)
             }
-        }
+        },
+        contentWindowInsets = WindowInsets(0, 0, 0, 0)
     ) { padding ->
         when {
             userViewModel.error -> {
@@ -554,7 +555,7 @@ private fun VideoList(navController: NavController, userViewModel: UserViewModel
                 } else {
                     LazyVerticalGrid(columns = GridCells.Fixed(2)) {
                         items(videoList) {
-                            MediaPreviewCard(navController, it!!)
+                            MediaPreviewCard(mediaPreview = it!!)
                         }
                     }
                 }
@@ -607,7 +608,7 @@ private fun ImageList(navController: NavController, userViewModel: UserViewModel
                 } else {
                     LazyVerticalGrid(columns = GridCells.Fixed(2)) {
                         items(videoList) {
-                            MediaPreviewCard(navController, it!!)
+                            MediaPreviewCard(mediaPreview = it!!)
                         }
                     }
                 }

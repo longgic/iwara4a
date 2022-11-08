@@ -33,7 +33,7 @@ import com.rerere.iwara4a.R
 import com.rerere.iwara4a.data.model.detail.video.VideoDetail
 import com.rerere.iwara4a.ui.component.RandomLoadingAnim
 import com.rerere.iwara4a.ui.component.SimpleIwaraTopBar
-import com.rerere.iwara4a.ui.component.basic.Centered
+import com.rerere.iwara4a.ui.component.layout.Centered
 import com.rerere.iwara4a.ui.component.modifier.noRippleClickable
 import com.rerere.iwara4a.ui.component.pagerTabIndicatorOffset
 import com.rerere.iwara4a.ui.component.player.PlayerController

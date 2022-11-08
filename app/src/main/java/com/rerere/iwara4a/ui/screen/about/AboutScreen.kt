@@ -28,7 +28,7 @@ import com.rerere.iwara4a.R
 import com.rerere.iwara4a.ui.component.AppBarStyle
 import com.rerere.iwara4a.ui.component.BackIcon
 import com.rerere.iwara4a.ui.component.Md3TopBar
-import com.rerere.iwara4a.ui.component.basic.Centered
+import com.rerere.iwara4a.ui.component.layout.Centered
 import com.rerere.iwara4a.ui.util.plus
 import com.rerere.iwara4a.util.openUrl
 
@@ -83,6 +83,7 @@ fun AboutScreen() {
                 Centered(
                     Modifier
                         .fillMaxWidth()
+                        .padding(12.dp)
                 ) {
                     AsyncImage(
                         modifier = Modifier

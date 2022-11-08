@@ -90,7 +90,7 @@ fun VideoListPage(indexViewModel: IndexViewModel) {
             columns = GridCells.Fixed(2),
         ) {
             items(list) {
-                MediaPreviewCard(LocalNavController.current, it)
+                MediaPreviewCard(mediaPreview = it)
             }
         }
     }
@@ -106,7 +106,7 @@ fun ImageListPage(indexViewModel: IndexViewModel) {
     ) { list ->
         LazyVerticalGrid(columns = adaptiveGridCell()) {
             items(list) {
-                MediaPreviewCard(LocalNavController.current, it)
+                MediaPreviewCard(mediaPreview = it)
             }
         }
     }

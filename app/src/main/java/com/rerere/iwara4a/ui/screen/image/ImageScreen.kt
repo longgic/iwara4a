@@ -37,7 +37,7 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.rerere.iwara4a.R
 import com.rerere.iwara4a.data.model.detail.image.ImageDetail
 import com.rerere.iwara4a.ui.component.*
-import com.rerere.iwara4a.ui.component.basic.Centered
+import com.rerere.iwara4a.ui.component.layout.Centered
 import com.rerere.iwara4a.ui.component.modifier.noRippleClickable
 import com.rerere.iwara4a.ui.local.LocalNavController
 import com.rerere.iwara4a.ui.util.plus
@@ -54,39 +54,42 @@ fun ImageScreen(
     val context = LocalContext.current
     val navController = LocalNavController.current
     val imageDetail by imageViewModel.imageDetail.collectAsState()
-    Scaffold(topBar = {
-        Md3TopBar(
-            title = {
-                Text(
-                    text = if (imageDetail is DataState.Success) imageDetail.read().title else stringResource(
-                        id = R.string.screen_image_topbar_title
-                    ),
-                    maxLines = 1
-                )
-            },
-            navigationIcon = {
-                BackIcon()
-            },
-            actions = {
-                if (imageDetail is DataState.Success) {
-                    IconButton(onClick = {
-                        imageDetail.readSafely()?.imageLinks?.forEachIndexed { i, link ->
-                            context.downloadImageNew(
-                                downloadUrlOfImage = link,
-                                filename = "${imageViewModel.imageId}_$i"
-                            )
+    Scaffold(
+        topBar = {
+            Md3TopBar(
+                title = {
+                    Text(
+                        text = if (imageDetail is DataState.Success) imageDetail.read().title else stringResource(
+                            id = R.string.screen_image_topbar_title
+                        ),
+                        maxLines = 1
+                    )
+                },
+                navigationIcon = {
+                    BackIcon()
+                },
+                actions = {
+                    if (imageDetail is DataState.Success) {
+                        IconButton(onClick = {
+                            imageDetail.readSafely()?.imageLinks?.forEachIndexed { i, link ->
+                                context.downloadImageNew(
+                                    downloadUrlOfImage = link,
+                                    filename = "${imageViewModel.imageId}_$i"
+                                )
+                            }
+                        }) {
+                            Icon(Icons.Outlined.Download, null)
                         }
-                    }) {
-                        Icon(Icons.Outlined.Download, null)
                     }
                 }
-            }
-        )
-    }) { padding ->
+            )
+        }
+    ) { padding ->
         when (imageDetail) {
             DataState.Empty, DataState.Loading -> {
                 RandomLoadingAnim()
             }
+
             is DataState.Error -> {
                 Centered(
                     modifier = Modifier
@@ -107,8 +110,11 @@ fun ImageScreen(
                     }
                 }
             }
+
             is DataState.Success -> {
-                Box(modifier = Modifier.padding(padding)) {
+                Box(
+                    modifier = Modifier.padding(padding)
+                ) {
                     ImagePage(navController, imageDetail.read(), imageViewModel)
                 }
             }
@@ -129,7 +135,6 @@ private fun ImagePage(
     Column(
         Modifier
             .fillMaxSize()
-            .navigationBarsPadding()
     ) {
         if (imageDetail.imageLinks.size > 1) {
             ScrollableTabRow(

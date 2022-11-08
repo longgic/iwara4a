@@ -1,4 +1,4 @@
-package com.rerere.iwara4a.ui.component.basic
+package com.rerere.iwara4a.ui.component.layout
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope

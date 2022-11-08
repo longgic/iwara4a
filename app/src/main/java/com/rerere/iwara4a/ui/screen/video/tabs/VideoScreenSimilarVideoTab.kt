@@ -26,7 +26,7 @@ fun VideoScreenSimilarVideoTab(videoDetail: VideoDetail) {
     ) {
         items(videoDetail.recommendVideo.filter { it.title.isNotEmpty() }) {
             MediaPreviewCard(
-                navController, MediaPreview(
+                mediaPreview = MediaPreview(
                     title = it.title,
                     author = "",
                     previewPic = it.pic,

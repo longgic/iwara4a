@@ -15,7 +15,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import com.google.android.exoplayer2.ui.StyledPlayerView
-import com.rerere.iwara4a.ui.component.basic.Centered
+import com.rerere.iwara4a.ui.component.layout.Centered
 import com.rerere.iwara4a.ui.states.OnLifecycleEvent
 import java.lang.ref.WeakReference
 

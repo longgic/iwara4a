@@ -45,7 +45,8 @@ fun VideoScreenCommentTab(videoViewModel: VideoViewModel) {
             ) {
                 Icon(Icons.Outlined.Comment, null)
             }
-        }
+        },
+        contentWindowInsets = WindowInsets(0,0,0,0)
     ) { padding ->
         val commentState by videoViewModel.commentPagerProvider.getPage()
             .collectAsState(DataState.Empty)

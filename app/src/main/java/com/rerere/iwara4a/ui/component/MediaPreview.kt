@@ -26,7 +26,11 @@ import me.rerere.slantedtext.SlantedMode
 import me.rerere.slantedtext.SlantedText
 
 @Composable
-fun MediaPreviewCard(navController: NavController = LocalNavController.current, mediaPreview: MediaPreview) {
+fun MediaPreviewCard(
+    navController: NavController = LocalNavController.current,
+    dynamicHeight: Boolean = false,
+    mediaPreview: MediaPreview
+) {
     ElevatedCard(
         modifier = Modifier
             .padding(8.dp)
@@ -107,7 +111,7 @@ fun MediaPreviewCard(navController: NavController = LocalNavController.current, 
 
                     Text(
                         text = mediaPreview.title.trim(),
-                        maxLines = 1,
+                        maxLines = if (dynamicHeight) 3 else 1,
                         fontWeight = FontWeight.Medium
                     )
                     if (mediaPreview.author.isNotEmpty()) {

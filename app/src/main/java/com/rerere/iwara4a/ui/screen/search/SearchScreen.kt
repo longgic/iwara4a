@@ -80,7 +80,7 @@ fun SearchScreen(searchViewModel: SearchViewModel = hiltViewModel()) {
                             ) { list ->
                                 LazyVerticalGrid(columns = GridCells.Fixed(2)) {
                                     items(list) {
-                                        MediaPreviewCard(navController, it)
+                                        MediaPreviewCard(mediaPreview = it)
                                     }
                                 }
                             }

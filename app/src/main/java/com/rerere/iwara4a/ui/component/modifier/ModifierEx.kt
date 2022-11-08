@@ -10,6 +10,11 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.unit.dp
 import me.rerere.compose_setting.preference.rememberBooleanPreference
 
+/**
+ * 一个没有点击效果的 clickable modifier
+ *
+ * @param onClick 点击处理
+ */
 fun Modifier.noRippleClickable(onClick: () -> Unit): Modifier = composed {
     clickable(
         indication = null,
@@ -19,6 +24,11 @@ fun Modifier.noRippleClickable(onClick: () -> Unit): Modifier = composed {
     }
 }
 
+/**
+ * 自动根据用户设置对NSFW内容进行模糊
+ *
+ * 需要Android 12+支持
+ */
 fun Modifier.nsfw() = composed {
     val demoMode by rememberBooleanPreference(
         key = "demoMode",
