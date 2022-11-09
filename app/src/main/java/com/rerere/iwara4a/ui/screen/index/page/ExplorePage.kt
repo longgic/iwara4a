@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
@@ -23,6 +25,7 @@ import com.rerere.iwara4a.ui.component.rememberPageListPage
 import com.rerere.iwara4a.ui.local.LocalNavController
 import com.rerere.iwara4a.ui.screen.index.IndexViewModel
 import com.rerere.iwara4a.ui.util.adaptiveGridCell
+import com.rerere.iwara4a.ui.util.adaptiveStaggeredGridCell
 import kotlinx.coroutines.launch
 
 @Composable
@@ -86,11 +89,11 @@ fun VideoListPage(indexViewModel: IndexViewModel) {
         provider = indexViewModel.videoListPrvider,
         supportQueryParam = true
     ) { list ->
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
+        LazyVerticalStaggeredGrid(
+            columns = adaptiveStaggeredGridCell()
         ) {
             items(list) {
-                MediaPreviewCard(mediaPreview = it)
+                MediaPreviewCard(dynamicHeight = true, mediaPreview = it)
             }
         }
     }
@@ -104,9 +107,11 @@ fun ImageListPage(indexViewModel: IndexViewModel) {
         provider = indexViewModel.imageListProvider,
         supportQueryParam = true
     ) { list ->
-        LazyVerticalGrid(columns = adaptiveGridCell()) {
+        LazyVerticalStaggeredGrid(
+            columns = adaptiveStaggeredGridCell()
+        ) {
             items(list) {
-                MediaPreviewCard(mediaPreview = it)
+                MediaPreviewCard(dynamicHeight = true, mediaPreview = it)
             }
         }
     }

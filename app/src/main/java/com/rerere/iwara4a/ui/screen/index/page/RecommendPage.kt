@@ -6,16 +6,28 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Error
 import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.flowlayout.FlowRow
@@ -27,7 +39,7 @@ import com.rerere.iwara4a.ui.component.MediaPreviewCard
 import com.rerere.iwara4a.ui.component.RandomLoadingAnim
 import com.rerere.iwara4a.ui.component.layout.Centered
 import com.rerere.iwara4a.ui.screen.index.IndexViewModel
-import com.rerere.iwara4a.ui.util.adaptiveGridCell
+import com.rerere.iwara4a.ui.util.adaptiveStaggeredGridCell
 import com.rerere.iwara4a.ui.util.stringResourceByName
 import com.rerere.iwara4a.util.DataState
 import com.rerere.iwara4a.util.onError
@@ -163,11 +175,12 @@ fun RecommendPage(
                 Crossfade(recommendVideoList) { recommendVideoList ->
                     when (recommendVideoList) {
                         is DataState.Success -> {
-                            LazyVerticalGrid(
-                                columns = adaptiveGridCell(),
+                            LazyVerticalStaggeredGrid(
+                                columns = adaptiveStaggeredGridCell()
                             ) {
                                 items(recommendVideoList.readSafely() ?: emptyList()) {
                                     MediaPreviewCard(
+                                        dynamicHeight = true,
                                         mediaPreview = it.toMediaPreview()
                                     )
                                 }

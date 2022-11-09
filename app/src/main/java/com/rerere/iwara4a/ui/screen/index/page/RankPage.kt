@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
@@ -121,6 +122,7 @@ private fun OrenoList(indexViewModel: IndexViewModel, second: Flow<PagingData<Or
                     previewList.refresh()
                 })
         }
+
         else -> {
             SwipeRefresh(
                 state = swipeRefreshState,
